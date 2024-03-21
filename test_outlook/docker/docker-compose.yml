@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  model:
+    build: 
+      context: .
+      dockerfile: Dockerfile.model
+    volumes:
+     - ./email_threads:/app/email_threads
+     - ./index:/app/index
+    ports:
+     - 5011:5011
+
+  outlook:
+    build:
+      context: .
+      dockerfile: Dockerfile.outlook
+    volumes:
+     - ./index:/app/index 
+    ports:
+     - 5012:5012
